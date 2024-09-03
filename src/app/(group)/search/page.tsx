@@ -47,106 +47,6 @@ const SearchPageIntersectionObserverElement = styled.div`
   height: 10px;
 `;
 
-const data = {
-  items: [
-    {
-      corp_cls: '',
-      corp_name: '삼성전자',
-      corp_code: "{{urlParam 'corp_code'}}",
-      stock_code: '005930',
-      report_name: '임원ㆍ주요주주특정증권등소유상황보고서',
-      reception_number: '20240611000462',
-      filer_name: '송재혁',
-      reception_date: '20240611',
-      remark: '공',
-    },
-    {
-      corp_cls: 'Y',
-      corp_name: '삼성전자',
-      corp_code: "{{urlParam 'corp_code'}}",
-      stock_code: '005930',
-      report_name: '임원ㆍ주요주주특정증권등소유상황보고서',
-      reception_number: '20240607000054',
-      filer_name: '윤주한',
-      reception_date: '20240607',
-      remark: '유',
-    },
-    {
-      corp_cls: 'Y',
-      corp_name: '삼성전자',
-      corp_code: "{{urlParam 'corp_code'}}",
-      stock_code: '005930',
-      report_name: '임원ㆍ주요주주특정증권등소유상황보고서',
-      reception_number: '20240607000045',
-      filer_name: '박순철',
-      reception_date: '20240607',
-      remark: '코',
-    },
-    {
-      corp_cls: 'Y',
-      corp_name: '삼성전자',
-      corp_code: "{{urlParam 'corp_code'}}",
-      stock_code: '005930',
-      report_name: '임원ㆍ주요주주특정증권등소유상황보고서',
-      reception_number: '20240607000008',
-      filer_name: '김동욱',
-      reception_date: '20240607',
-      remark: '채',
-    },
-    {
-      corp_cls: 'Y',
-      corp_name: '삼성전자',
-      corp_code: "{{urlParam 'corp_code'}}",
-      stock_code: '005930',
-      report_name: '임원ㆍ주요주주특정증권등소유상황보고서',
-      reception_number: '20240604000031',
-      filer_name: '노태문',
-      reception_date: '20240604',
-      remark: '넥',
-    },
-  ],
-  total: 2819,
-  page: 1,
-  pages: 10,
-  size: 50,
-  matched_corps_meta: {
-    삼성전자: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-    삼성전자1: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산1: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-
-    삼성전자2: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산2: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-    삼성전자4: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산5: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-  },
-  selected_corp: '',
-};
-
 const SearchPage = () => {
   const searchParams = useSearchParams();
   const corporationName = searchParams.get('name');
@@ -155,10 +55,11 @@ const SearchPage = () => {
   const [selectedCorporation, setSelectedCorporation] = useState<string>('');
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const { isLoading, isError, error } = useFetchReportListQuery(corporationName, corporationCode, {
+  const { isLoading, isError, error, data } = useFetchReportListQuery(corporationName, corporationCode, {
     page,
     size: 30,
     selected_corp: selectedCorporation,
+    isPage: true,
   });
 
   const handleClickCorporation = (corporation: string) => {
@@ -175,9 +76,9 @@ const SearchPage = () => {
 
   useIntersectionObserver(observerCallback, observerRef);
 
-  // if (isLoading) {
-  //   return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
-  // }
+  if (isLoading) {
+    return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
+  }
 
   // if (isError) {
   //   throw error

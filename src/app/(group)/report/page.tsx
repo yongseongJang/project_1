@@ -24,7 +24,7 @@ const ReportPage = () => {
   const fetchedIndexLabelRef = useRef<string>(currentIndexLabel);
   const contentRef = useRef<{ [key: string]: HTMLElement }>({});
 
-  const { isLoading, isError, error } = useFetchReportIndexQuery(reportID);
+  const { isLoading, isError, error, data } = useFetchReportIndexQuery(reportID);
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     //setIsVisibleBanner(true)
@@ -41,18 +41,20 @@ const ReportPage = () => {
       fetchedIndexLabelRef.current = indexLabel;
     }
   };
+  console.log(currentIndexLabel, contentRef.current)
 
+  // fix bug
   useEffect(() => {
     contentRef.current[currentIndexLabel]?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
-  }, [currentIndexLabel]);
+  }, [currentIndexLabel, contentRef.current]);
 
-  // if (isLoading) {
-  //   return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
-  // }
-  //
+  if (isLoading) {
+    return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
+  }
+
   // if (isError) {
   //   throw error
   // }

@@ -60,6 +60,8 @@ const ReportBody = forwardRef<ReportBodyProps, { [key: string]: HTMLElement }>(
     let beforeCurrentIndexLabel = true;
 
     const observerCallback = useCallback(() => {
+      if (!ref.current[currentIndexLabel]) return;
+
       const i = indexLabels.indexOf(fetchedIndexLabelRef.current);
 
       if (i + 1 === indexLabels.length) return;

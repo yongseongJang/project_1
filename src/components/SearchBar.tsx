@@ -98,33 +98,6 @@ interface SearchBarProps {
   placeholderText: string;
 }
 
-const data = [
-  {
-    corp_name: '삼성전자 서비스주식회사',
-    corp_code: '00258999',
-    stock_name: '삼성전자서비스',
-    stock_code: '',
-  },
-  {
-    corp_name: '삼성전자서비스씨에스 주식회사',
-    corp_code: '01345812',
-    stock_name: '삼성전자서비스씨에스',
-    stock_code: '',
-  },
-  {
-    corp_name: '삼성전자판매 주식회사',
-    corp_code: '00252074',
-    stock_name: '삼성전자판매',
-    stock_code: '',
-  },
-  {
-    corp_name: '삼성전자로지텍(주)',
-    corp_code: '00366997',
-    stock_name: '삼성전자로지텍',
-    stock_code: '',
-  },
-];
-
 const SearchBar = ({ style, placeholderText }: SearchBarProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -135,7 +108,7 @@ const SearchBar = ({ style, placeholderText }: SearchBarProps) => {
   const [focusedItemIndex, setFocusedItemIndex] = useState<number>(-1);
   const [corporationName, setCorporationName] = useState<string>(searchParams.get('name') ?? '');
   const [debouncedCorporationName, setDebouncedCorporationName] = useState<string>(corporationName);
-  const { isLoading, isError, error } = useFetchCorporationQuery(debouncedCorporationName);
+  const { isLoading, isError, error, data } = useFetchCorporationQuery(debouncedCorporationName);
 
   useEffect(() => {
     document.addEventListener('click', handleFocusOut);
@@ -153,7 +126,7 @@ const SearchBar = ({ style, placeholderText }: SearchBarProps) => {
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCorporationName(e.target.value);
-    debounce(() => {setDebouncedCorporationName(e.target.value); console.log(e.target.value)}, 500)
+    debounce(() => setDebouncedCorporationName(e.target.value), 500)
   };
 
   const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {

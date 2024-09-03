@@ -1,10 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import Image from 'next/image';
 import Link from 'next/link';
-
-import productImage from '@/static/images/landing.png';
 
 import { Button, SearchBar, Symbol, Spinner } from '@/components';
 import { OAuthModal } from '@/app/components';
@@ -30,29 +27,11 @@ const LandingPageRightCol = styled.div`
 `;
 
 const LandingPageParagraphBox = styled.div`
-  padding-top: 15%;
-`;
-
-const LandingPageImageContainer = styled.div`
-  position: relative;
-  flex-grow: 1;
-`;
-
-const LandingPageImageBox = styled.div`
-  position: absolute;
-  bottom: 0;
-  padding-top: 12%;
-  padding-left: 4%;
-  padding-right: 4%;
   height: 100%;
-  width: 100%;
-  max-height: 582px;
-
-  img {
-    display: block;
-    width: 100%;
-    height: inherit;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LandingPageButtonBox = styled.div`
@@ -135,11 +114,6 @@ const LandingPage = () => {
             <LandingPageText>GPT 기반 </LandingPageText>용어 해석 서비스
           </LandingPageParagraph>
         </LandingPageParagraphBox>
-        <LandingPageImageContainer>
-          <LandingPageImageBox>
-            <Image priority={true} src={productImage} alt='product image' />
-          </LandingPageImageBox>
-        </LandingPageImageContainer>
       </LandingPageLeftCol>
       <LandingPageRightCol>
         <LandingPageButtonBox onClick={() => changeModalStatus(true)}>

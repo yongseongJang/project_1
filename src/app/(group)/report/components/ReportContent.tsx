@@ -1,15 +1,11 @@
 'use client';
 
-import { createElement, useState, useRef, forwardRef } from 'react';
+import { useEffect, createElement, useState, useRef, forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { Loading } from '@/app/(group)/components';
 import { ReportDescription } from '.';
 import { useFetchReportQuery, useDescribeMutation } from '@/queries';
-
-import { data as data1 } from '../reportContent1.ts';
-import { data as data2 } from '../reportContent2.ts';
-import { data as data3 } from '../reportContent3.ts';
 
 const ReportContentLayout = styled.div`
   position: relative;
@@ -90,11 +86,11 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
     const textRef = useRef<string>('');
     const btnRef = useRef<null | HTMLDivElement>(null);
     const mutation = useDescribeMutation();
-    const { isLoading, isError, error } = useFetchReportQuery(reportID, indexLabel);
+    const { isLoading, isError, error, data } = useFetchReportQuery(reportID, indexLabel);
 
-    // if (isLoading) {
-    //   return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
-    // }
+    if (isLoading) {
+       return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
+    }
 
     // if (isError || mutation.isError) {
     //   throw error
@@ -127,9 +123,7 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
         ref={(element) => (ref.current[indexLabel] = element)}
         onMouseUp={handleMouseUp}
       >
-        {data1 && createElementRecursive(data1.tag, data1.attrs, data1.children)}
-        {data2 && createElementRecursive(data2.tag, data2.attrs, data2.children)}
-        {data3 && createElementRecursive(data3.tag, data3.attrs, data3.children)}
+        { data.map((d) => (createElementRecursive(d.tag, d.attrs, d.children))) }
         {isVisibleBtn && (
           <div
             ref={btnRef}
