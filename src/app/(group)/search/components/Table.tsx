@@ -52,10 +52,9 @@ const TableHeader = styled.th``;
 
 interface TableProps {
   page: number;
-  selectedCorporation: string;
 }
 
-const Table = ({ page, selectedCorporation }: TableProps) => {
+const Table = ({ page }: TableProps) => {
   return (
     <TableLayout>
       <TableElement>
@@ -74,9 +73,8 @@ const Table = ({ page, selectedCorporation }: TableProps) => {
             .fill(null)
             .map((value, index) => (
               <TableRow
-                key={`${selectedCorporation}_${index + 1}`}
+                key={`${page}_${index + 1}`}
                 page={index + 1}
-                selectedCorporation={selectedCorporation}
               />
             ))}
         </tbody>

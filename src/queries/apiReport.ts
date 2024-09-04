@@ -72,51 +72,16 @@ const fetchReportListQueryMockData = {
   page: 1,
   pages: 10,
   size: 50,
-  matched_corps_meta: {
-    삼성전자: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-    삼성전자1: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산1: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-
-    삼성전자2: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산2: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-    삼성전자4: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 255,
-    },
-    삼성물산5: {
-      corp_code: "{{urlParam 'corp_code'}}",
-      count: 125,
-    },
-  },
-  selected_corp: '',
 };
 
 export const useFetchReportListQuery = (
+  queryKeyItem: string,
   corporationName: string,
   corporationCode: string,
   params?: { [key: string]: any } = {},
 ) => {
   const { isLoading, isError, error, data } = useQuery({
-    queryKey: [QUERY_KEYS.fetchReportList, corporationName, corporationCode],
+    queryKey: [QUERY_KEYS.fetchReportList, queryKeyItem, corporationName, corporationCode],
     queryFn: async () => {
       const response = await api.get(
         `/report/${corporationCode ? corporationCode : corporationName}`,
@@ -126,7 +91,6 @@ export const useFetchReportListQuery = (
       return response.data;
     },
     retry: false,
-    enabled: false
   });
 
   let mockData = { items: [] }

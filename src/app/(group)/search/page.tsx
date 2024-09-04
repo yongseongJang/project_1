@@ -52,27 +52,18 @@ const SearchPage = () => {
   const corporationName = searchParams.get('name');
   const corporationCode = searchParams.get('code');
   const [page, setPage] = useState<number>(1);
-  const [selectedCorporation, setSelectedCorporation] = useState<string>('');
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const { isLoading, isError, error, data } = useFetchReportListQuery(corporationName, corporationCode, {
+  const { isLoading, isError, error, data } = useFetchReportListQuery('page', corporationName, corporationCode, {
     page,
     size: 30,
-    selected_corp: selectedCorporation,
-    isPage: true,
   });
 
-  const handleClickCorporation = (corporation: string) => {
-    setPage(1);
-    setSelectedCorporation(corporation);
-  };
-
-  //update page function for useIntersectionObserver hook
   const observerCallback = useCallback(() => {
     if (page >= data.pages) return;
 
     setPage((page) => page + 1);
-  }, [page, selectedCorporation]);
+  }, [page, isLoading]);
 
   useIntersectionObserver(observerCallback, observerRef);
 
@@ -90,13 +81,11 @@ const SearchPage = () => {
         <SearchPageText>{corporationName}</SearchPageText>
         <SearchResult
           result={data.size}
-          selectedCorporation={selectedCorporation}
           corporations={data.matched_corps_meta}
-          onClickCorporation={handleClickCorporation}
         />
       </SearchPageLeftCol>
       <SearchPageRightCol>
-        <Table page={page} selectedCorporation={selectedCorporation} />
+        <Table page={page} />
         <SearchPageIntersectionObserverElement ref={observerRef} />
       </SearchPageRightCol>
     </SearchPageLayout>

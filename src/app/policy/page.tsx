@@ -136,7 +136,7 @@ Amazon Web Services, Inc.	개인정보 저장·처리를 위한 인프라 관리
 ⑧ ‘Aimdat’은 권리 행사를 담당자에게 문의 할 수 있습니다. ‘Aimdat’은 정보주체의 권리 행사가 신속하게 처리되도록 노력하겠습니다.
 
 개인정보 열람 등 청구 접수·처리 문의
-연락처: dhrltjr100@naver.com
+연락처: aimdat@naver.com
 </PolicyPageText>
 
 <PolicyPageBoldText>
@@ -146,8 +146,7 @@ Amazon Web Services, Inc.	개인정보 저장·처리를 위한 인프라 관리
 ① ‘Aimdat’은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
 
 개인정보 보호책임자
-성명: 오기석
-연락처: dhrltjr100@naver.com
+연락처: aimdat@naver.com
 
 ② 정보주체는 ‘Aimdat’의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의할 수 있습니다. ‘Aimdat’은 정보주체의 문의에 대해 지체없이 답변 및 처리해드릴 것입니다.
 </PolicyPageText>
@@ -163,7 +162,7 @@ Amazon Web Services, Inc.	개인정보 저장·처리를 위한 인프라 관리
 3. 대검찰청: (국번없이) 1301 (www.spo.go.kr)
 4. 경찰청: (국번없이) 182 (ecrm.cyber.go.kr)
 
-② ‘Aimdat’은 정보주체의 개인정보자기결정권을 보장하고, 개인정보침해로 인한 상담 및 피해구제를 위해 노력하고 있으며, 신고나 상담이 필요한 경우 dhrltjr100@naver.com으로 연락해 주시기 바랍니다.
+② ‘Aimdat’은 정보주체의 개인정보자기결정권을 보장하고, 개인정보침해로 인한 상담 및 피해구제를 위해 노력하고 있으며, 신고나 상담이 필요한 경우 aimdat@naver.com으로 연락해 주시기 바랍니다.
 </PolicyPageText>
 
 <PolicyPageBoldText>

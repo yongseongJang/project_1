@@ -46,20 +46,18 @@ const TableRowBox = styled.div<{ $hasLeftPadding: boolean }>`
 
 interface TableRowProps {
   page: number;
-  selectedCorporation: string;
 }
 
-const TableRow = ({ page, selectedCorporation }: TableRowProps) => {
+const TableRow = ({ page }: TableRowProps) => {
   const { updateReportContextValue } = useContext(ReportContext);
   const router = useRouter();
   const searchParams = useSearchParams();
   const corporationName = searchParams.get('name');
   const corporationCode = searchParams.get('code');
 
-  const { isLoading, isError, error, data } = useFetchReportListQuery(corporationName, corporationCode, {
+  const { isLoading, isError, error, data } = useFetchReportListQuery('tableRow', corporationName, corporationCode, {
     page,
     size: 30,
-    selected_corp: selectedCorporation,
   });
 
   const handleClickRow = (
