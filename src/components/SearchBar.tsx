@@ -165,7 +165,7 @@ const SearchBar = ({ style, placeholderText }: SearchBarProps) => {
     setIsFocus(true);
   };
 
-  const handleClickImage = (e: React.ClickEvent<HTMLImageElement>) => {
+  const handleClickImage = (e: React.MouseEvent<HTMLImageElement>) => {
     setIsFocus(false);
     setFocusedItemIndex(-1);
 

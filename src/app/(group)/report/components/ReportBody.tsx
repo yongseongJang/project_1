@@ -60,7 +60,7 @@ const ReportBody = forwardRef<ReportBodyProps, { [key: string]: HTMLElement }>(
     let beforeCurrentIndexLabel = true;
 
     const observerCallback = useCallback(() => {
-      if (!ref.current[currentIndexLabel]) return;
+      if (typeof ref === 'function' || !ref || !ref.current || !ref.current[currentIndexLabel]) return;
 
       const i = indexLabels.indexOf(fetchedIndexLabelRef.current);
 
@@ -94,5 +94,7 @@ const ReportBody = forwardRef<ReportBodyProps, { [key: string]: HTMLElement }>(
     );
   },
 );
+
+ReportBody.displayName = 'ReportBody'
 
 export default ReportBody;

@@ -1,6 +1,6 @@
 'use client';
 
-import { createElement, useState, useRef, useEffect } from 'react';
+import { createElement, useState, useRef, useEffect, Suspense } from 'react';
 import styled from 'styled-components';
 import { useSearchParams } from 'next/navigation';
 
@@ -30,7 +30,7 @@ const ReportPage = () => {
     //setIsVisibleBanner(true)
   };
 
-  const handleReportIndex = (e: React.ClickEvent<HTMLDivElement>) => {
+  const handleReportIndex = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsVisibleReportIndex((isVisibleReportIndex) => !isVisibleReportIndex);
   };
 
@@ -38,12 +38,14 @@ const ReportPage = () => {
     setCurrentIndexLabel(indexLabel);
 
     if (data.toc_arr.indexOf(indexLabel) > data.toc_arr.indexOf(fetchedIndexLabelRef.current)) {
+      contentRef.current[fetchedIndexLabelRef.current].scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      })
       fetchedIndexLabelRef.current = indexLabel;
     }
   };
-  console.log(currentIndexLabel, contentRef.current)
 
-  // fix bug
   useEffect(() => {
     contentRef.current[currentIndexLabel]?.scrollIntoView({
       behavior: 'smooth',

@@ -88,6 +88,17 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
     const mutation = useDescribeMutation();
     const { isLoading, isError, error, data } = useFetchReportQuery(reportID, indexLabel);
 
+    useEffect(() => {
+        if (isLoading) return
+
+        if (ref.current[indexLabel]) {
+            ref.current[indexLabel].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+        }
+    }, [isLoading])
+
     if (isLoading) {
        return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
     }
@@ -113,7 +124,7 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
       setBtnPosition({ top: e.clientY - position.top, left: e.clientX - position.left });
     };
 
-    const handleClick = (e: React.ClickEvent<HTMLDivElement>) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       mutation.mutate(textRef.current);
       setIsVisibleBtn(false);
     };
@@ -152,5 +163,7 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
     );
   },
 );
+
+ReportContent.displayName = 'ReportContent'
 
 export default ReportContent;

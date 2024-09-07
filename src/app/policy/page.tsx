@@ -165,13 +165,6 @@ Amazon Web Services, Inc.	개인정보 저장·처리를 위한 인프라 관리
 ② ‘Aimdat’은 정보주체의 개인정보자기결정권을 보장하고, 개인정보침해로 인한 상담 및 피해구제를 위해 노력하고 있으며, 신고나 상담이 필요한 경우 aimdat@naver.com으로 연락해 주시기 바랍니다.
 </PolicyPageText>
 
-<PolicyPageBoldText>
-10. 개인정보 처리방침의 변경에 관한 사항
-</PolicyPageBoldText>
-<PolicyPageText>
-이 개인정보 처리방침은 2024. 08. 31부터 적용됩니다.
-</PolicyPageText>
-
 </PolicyPageLayout>
   )
 }

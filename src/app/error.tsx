@@ -49,7 +49,7 @@ const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    router.back();
+    router.push('/');
   };
 
   return (

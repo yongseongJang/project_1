@@ -72,7 +72,7 @@ const TableRow = ({ page }: TableRowProps) => {
 
   return (
     <>
-      {data.items.map((item) => {
+      {data.items.map((item, index) => {
         const {
           corp_cls: corporationClass,
           corp_name: corporationName,
@@ -86,7 +86,7 @@ const TableRow = ({ page }: TableRowProps) => {
               handleClickRow(corporationClass, corporationName, reportTitle, receptionNumber)
             }
           >
-            <TableRowElement>{page}</TableRowElement>
+            <TableRowElement>{(page -1) * 5 + (index + 1) }</TableRowElement>
             <TableRowElement>
               <TableRowBox $hasLeftPadding={!corporationClass}>
                 {corporationClass && <CorporationClassIcon corporationClass={corporationClass} />}

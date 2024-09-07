@@ -63,7 +63,7 @@ const SearchPage = () => {
     if (page >= data.pages) return;
 
     setPage((page) => page + 1);
-  }, [page, isLoading]);
+  }, [page, isLoading, data.pages]);
 
   useIntersectionObserver(observerCallback, observerRef);
 
@@ -71,9 +71,9 @@ const SearchPage = () => {
     return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
   }
 
-  // if (isError) {
-  //   throw error
-  // }
+  //if (isError) {
+  //  throw error
+  //}
 
   return data?.items?.length > 0 ? (
     <SearchPageLayout>

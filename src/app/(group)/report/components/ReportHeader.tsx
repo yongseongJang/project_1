@@ -116,13 +116,13 @@ const ReportHeaderCloseBtn = styled.div`
 
 interface ReportHeaderProps {
   isVisibleReportIndex: boolean;
-  onClickFoldBtn: (e: React.ClickEvent<HTMLDivElement>) => void;
+  onClickFoldBtn: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const ReportHeader = ({ isVisibleReportIndex, onClickFoldBtn } = ReportHeaderProps) => {
   const { reportContextValue, updateReportContextValue } = useContext(ReportContext);
   const router = useRouter();
-  const handleClickCloseBtn = (e: React.ClickEvent<HTMLDivElement>) => {
+  const handleClickCloseBtn = (e: React.MouseEvent<HTMLDivElement>) => {
     router.back();
   };
 

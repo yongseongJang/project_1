@@ -42,7 +42,7 @@ const Header = () => {
   const router = useRouter();
   const { isVisibleModal, changeModalStatus } = useModal();
 
-  const handleClick = (e: React.ClickEvent<HTMLDivElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     router.push('/');
   };
 
