@@ -103,6 +103,11 @@ const LandingPageAnchor = styled.a`
 const LandingPage = () => {
   const { isVisibleModal, changeModalStatus } = useModal();
 
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const isMobile = /android|iphone|ipad|iPod/i.test(userAgent)
+
+  if ( isMobile ) return ( <LandingPageLayout>모바일은 지원하지 않습니다.</LandingPageLayout> )
+
   return (
     <LandingPageLayout>
       <LandingPageLeftCol>

@@ -42,6 +42,7 @@ const ReportContentBorderTable = styled.table`
 interface ReportContentProps {
   reportID: string;
   indexlabel: string;
+  isLastFetchedContent: boolean;
 }
 
 const convertTag = (tag: string, style: { [key: string]: string }) => {
@@ -76,7 +77,7 @@ const createElementRecursive = (tag: string, props: any, children: any) => {
 };
 
 const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElement }>(
-  ({ reportID, indexLabel }, ref) => {
+  ({ reportID, indexLabel, isLastFetchedContent }, ref) => {
     const [isVisibleBtn, setIsVisibleBtn] = useState<boolean>(false);
     const [isVisibleDescription, setIsVisibleDescription] = useState<boolean>(false);
     const [btnPosition, setBtnPosition] = useState<{ top: number; left: number }>({
@@ -100,7 +101,11 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
     }, [isLoading])
 
     if (isLoading) {
-       return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
+       if (isLastFetchedContent) {
+          return <Loading style={{ width: '90px', height: '90px' }} isVisibleText={true} />;
+       } else {
+          return <></>
+       }
     }
 
     // if (isError || mutation.isError) {
@@ -134,6 +139,7 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
         ref={(element) => (ref.current[indexLabel] = element)}
         onMouseUp={handleMouseUp}
       >
+        {indexLabel}
         { data.map((d) => (createElementRecursive(d.tag, d.attrs, d.children))) }
         {isVisibleBtn && (
           <div

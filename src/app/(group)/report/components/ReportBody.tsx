@@ -85,6 +85,7 @@ const ReportBody = forwardRef<ReportBodyProps, { [key: string]: HTMLElement }>(
               key={`${reportID}_${indexLabel}`}
               reportID={reportID}
               indexLabel={indexLabel}
+              isLastFetchedContent={indexLabel === fetchedIndexLabelRef.current}
               ref={ref}
             />
           );
