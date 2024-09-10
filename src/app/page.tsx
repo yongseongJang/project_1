@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useLayoutEffect } from 'react'
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -101,10 +102,16 @@ const LandingPageAnchor = styled.a`
 `;
 
 const LandingPage = () => {
+  const [ isMobile, setIsMobile ]  = useState<boolean>(false)
   const { isVisibleModal, changeModalStatus } = useModal();
 
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  const isMobile = /android|iphone|ipad|iPod/i.test(userAgent)
+
+  useLayoutEffect(() => {		 
+  	const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  	const isMobile = /android|iphone|ipad|iPod/i.test(userAgent)
+
+	setIsMobile(isMobile)
+  }, [])
 
   if ( isMobile ) return ( <LandingPageLayout>모바일은 지원하지 않습니다.</LandingPageLayout> )
 
