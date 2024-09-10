@@ -25,6 +25,7 @@ const LandingPageLeftCol = styled.div`
 const LandingPageRightCol = styled.div`
   position: relative;
   width: 43%;
+  background-color: #FFFFFF;
 `;
 
 const LandingPageParagraphBox = styled.div`
@@ -105,6 +106,7 @@ const LandingPage = () => {
   const [ isMobile, setIsMobile ]  = useState<boolean>(false)
   const { isVisibleModal, changeModalStatus } = useModal();
 
+  console.log(213)
 
   useLayoutEffect(() => {		 
   	const userAgent = navigator.userAgent || navigator.vendor || window.opera;

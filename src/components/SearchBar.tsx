@@ -41,6 +41,7 @@ const SearchBarInput = styled.input`
   color: #000000b2;
   margin-left: 32px;
   margin-right: 8px;
+  background-color: #FFFFFF;
 
   &::placeholder {
     font-weight: 500;
@@ -80,6 +81,7 @@ const SearchBarDropDownItem = styled.div<{ $isFocused: boolean }>`
   text-align: center;
   cursor: pointer;
   ${(props) => props.$isFocused && 'background-color: #0000000a'};
+  color: #000000b2;
 
   &:hover {
     background-color: #0000000a;

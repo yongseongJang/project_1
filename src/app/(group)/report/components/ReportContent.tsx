@@ -9,6 +9,7 @@ import { useFetchReportQuery, useDescribeMutation } from '@/queries';
 
 const ReportContentLayout = styled.div`
   position: relative;
+  color: #000000;
 `;
 
 const ReportContentH2 = styled.h2`
@@ -139,7 +140,6 @@ const ReportContent = forwardRef<ReportContentProps, { [key: string]: HTMLElemen
         ref={(element) => (ref.current[indexLabel] = element)}
         onMouseUp={handleMouseUp}
       >
-        {indexLabel}
         { data.map((d) => (createElementRecursive(d.tag, d.attrs, d.children))) }
         {isVisibleBtn && (
           <div
